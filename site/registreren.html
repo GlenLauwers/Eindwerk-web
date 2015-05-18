@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Keywords" content="" />
+    <title>Registreren - Game Action</title>
+
+    <!-- Style -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header>
+      <div id="hoofding" class="hoofding row col-md-12 centered">
+        <div class="logo col-md-4">
+          <a href="index.html"><img src="afbeeldingen/logo.png" alt="logo"></a>
+        </div>
+
+        <div class="links col-md-8 hidden-sm hidden-xs">
+          <div class="pull-right">
+            <div>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="over_ons.html">Over ons</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+  
+              <div class="gebruiker pull-right">
+                <p>U bent nog niet ingelogd (<a href="login.html">Inloggen</a>)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="row col-md-12 navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse nav">
+          <ul class="nav navbar-nav navigatie  ">
+            <li><a href="overzicht.html">P.C.</a></li>
+            <li><a href="overzicht.html">PS3</a></li>
+            <li><a href="overzicht.html">PS4</a></li>
+            <li><a href="overzicht.html">PS Vita</a></li>
+            <li><a href="overzicht.html">Xbox 360</a></li>
+            <li><a href="overzicht.html">Xbox One</a></li>
+            <li><a href="overzicht.html">WII</a></li>
+            <li><a href="overzicht.html">WII U</a></li>
+            <li><a href="overzicht.html">Nintendo 3DS</a></li>
+          </ul>
+
+          <div class="zoeken">
+            <form class="pull-right">
+               <input type="text" value="Zoeken">
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="content">
+      <div class="row col-md-12">
+        <p><a href="#">Home</a>>Registreren</p>
+      </div>
+
+      <div class="row col-md-12 titel">
+        <h2>Registreren</h2>
+        <p>Vul het onderstaande formulier in om u te registreren.</p>
+      </div>
+
+      <form class="registreren" method="POST">
+        <div class="row kolom1 col-md-6">
+          <label for="gebruikersnaam">Gebruikersnaam*:</label>
+            <input type="text" name="gebruikersnaam" id="gebruikersnaam">
+
+          <label for="wachtwoord">Wachtwoord*:</label>
+            <input type="password" name="wachtwoord" id="wachtwoord">
+
+          <label for="wachtwoord_bev">Wachtwoord bevestigen*:</label>
+            <input type="password" name="wachtwoord_bev" id="wachtwoord_bev">
+
+          <div class="veld_register col-md-12 row">
+            <div class="col-md-6 row">
+              <label for="familienaam">Naam*:</label>
+                <input type="text" name="familienaam" id="familienaam">
+            </div>
+
+            <div class="col-md-6 row">
+              <label for="voornaam">Voornaam*:</label>
+                <input type="text" name="voornaam" id="voornaam">
+            </div>
+          </div>
+
+          <label for="mail">E-mailadres*:</label>
+            <input type="text" name="mail" id="mail">
+        </div>
+
+        <div class="row kolom2 col-md-6">
+          <label for="datum">Geboortedatum*:</label>
+            <p class="datum">Dag:<input type="text" name="datum" id="dag">
+            Maand:<input type="text" name="datum" id="maand">
+            Jaar:<input type="text" name="datum" id="jaar"></p>
+
+          <div class="veld_register col-md-12 row">
+            <div class="col-md-8 row">
+              <label for="adres">Straat + nr*:</label>
+                <input type="text" name="adres" id="adres">
+            </div>
+
+            <div class="col-md-4 row">
+              <label for="bus">Bus:</label>
+                <input type="text" name="bus" id="bus">
+            </div>
+          </div>
+
+          <div class="veld_register col-md-12 row">
+            <div class="col-md-4 row">
+              <label for="postcode">Postcode*:</label>
+              <input type="text" name="postcode" id="postcode">
+            </div>
+
+            <div class="col-md-8 row">
+              <label for="gemeente">Gemeente*:</label>
+              <input type="text" name="gemeente" id="gemeente">
+            </div>
+          </div>
+
+          <label for="land">Land*:</label>
+            <input type="text" name="land" id="land">
+
+          <label for="telefoon">Telefoon*:</label>
+            <input type="text" name="telefoon" id="telefoon">
+        </div>
+
+        <div class="row onder col-md-12">
+          <input type="checkbox" value="1" id="nieuwsbrief"><label>Ja, ik wil graag iedere maand de nieuwsbrief ontvangen</label>
+          <p>Velden met een * zijn verplicht.</p>
+          <input type="submit" value="Registreren" name="registreren" id="registreren">
+        </div>
+      </form>
+    </div>
+
+    <footer class="col-md-12">
+      <div class="row col-md-12 footer ">
+        <div class="row col-md-4 service">
+          <h2>Klantenservice</h2>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Inloggen</a></li>
+            <li><a href="over_ons.html">Over ons</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="row col-md-4 betalingswijze">
+          <h2>Betalingswijze</h2>
+          <img src="afbeeldingen/visa.png" alt="visa">
+          <img src="afbeeldingen/bankcontact.png" alt="bankcontact">
+          <img src="afbeeldingen/mastercard.png" alt="mastercard">
+          <img src="afbeeldingen/maestro.png" alt="maestro">
+          <img src="afbeeldingen/fortis.png" alt="fortis">
+          <img src="afbeeldingen/belfius.png" alt="belfius">
+          <img src="afbeeldingen/ing.png" alt="ing">
+          <img src="afbeeldingen/kbc.png" alt="kbc">
+          <img src="afbeeldingen/paypal.png" alt="paypal">
+        </div>
+
+        <div class="col-md-4 row logo_foot pull-right">
+          <img src="afbeeldingen/logo_wit.png" alt="logo">
+        </div>   
+
+        <div class="row col-md-12 naam">
+          <p>2015 -- gameaction</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

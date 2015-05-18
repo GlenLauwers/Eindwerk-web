@@ -1,0 +1,254 @@
+@charset "UTF-8";
+/* CSS Document */
+body{
+	font-family: helvetica;
+	color: black;
+}
+
+a{
+	color: black;
+}
+
+@media (min-width: 992px){
+	.hoofding{
+		width: 1000px;
+	}
+
+	.content{
+		width: 1000px;
+	}
+
+	.footer{
+		width: 1000px;
+	}
+
+	.trailer iframe{
+	border: grey solid thick;
+	height: 300px;
+	width: 50%;
+	}
+}
+
+.hoofding
+{
+	float: none;
+	margin: auto;
+	padding: 0;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: white;
+}
+
+.content{
+	margin: auto;
+	float: none;
+}
+
+.logo{
+	float: left;
+	padding: 0;
+	margin-top: 20px;
+}
+
+.links{
+	padding: 0;
+	margin-top: 15px;
+}
+
+.links ul li{
+	display: inline;
+	padding-left: 10px;
+}
+
+.links ul li a{
+	font-size: 15px;
+}
+
+.gebruiker p{
+	font-size: 15px;
+}
+
+form input{
+	width: 100%;
+	height: 30px;
+	display: inline;
+	margin: 10px 0 10px 10px;
+}
+
+.navbar-default{
+	background-color: #0098DA;
+	border: none;
+	border-radius: 0%;
+	margin: auto;
+	padding:0;
+	margin-bottom: 10px;
+}
+
+.navbar-default .navbar-nav>li>a{
+	color: white;
+	font-size: 120%;
+	border-right: white solid thin;
+}
+
+.navbar-default .navbar-nav>li>a:hover{
+	background-color: #C41230;
+	color: white;
+}
+
+.active{
+	background-color: #C41230;
+	color: white;
+}
+
+#navbar{
+	padding: 0;
+	float: none;
+	margin: auto;
+	width: 1000px;
+}
+
+.foto img{
+	width: 100%;
+	border:  #0098DA solid thick;
+}
+
+.foto{
+	margin-right: 10px;
+}
+
+.prijs h4{
+	font-size: 30px;
+}
+
+.screenshots img{
+	width: 100%;
+	border:  #0098DA solid thick;
+}
+
+.screenshot{
+	padding: 10px;
+}
+
+.trailer iframe{
+	border:  #0098DA solid thick;
+}
+
+footer, footer a{
+	background-color: #0098DA;
+	margin-top: 20px;
+	color: white;
+}
+
+footer ul{
+	list-style-type: none;
+	padding: 0;
+}
+
+footer{
+	width: 100%;
+	color: white;
+}
+
+.logo_foot img{
+	width: 100%;
+	margin-top: 60px;
+	margin-bottom: 60px;
+}
+
+.footer{
+	width: 1000px;
+	float: none;
+	margin: auto;
+	padding: 0;
+}
+
+.naam{
+	text-align: center;
+	margin-top: 10px;
+}
+
+.betalingswijze{
+	padding: 0;
+}
+
+.betalingswijze img{
+	height: 20px;
+	margin: 10px 10px 10px 0;
+}
+
+.knoppen ul{
+	padding: 0;
+	list-style-type: none;
+}
+
+.knoppen ul li{
+	font-size: 15px;
+	display: inline;
+	margin-right: 10px;
+}
+
+.knoppen button{
+	width: 220px;
+}
+
+.knoppen a img{
+	width: 50px;
+	padding: 0 5px 0 0;
+	margin: 0;
+}
+
+.knoppen{
+	margin-top: 10px;
+	padding: 15px;
+}
+
+.boven{
+	padding: 0;
+}
+
+.knoppen img{
+	width: 70px;
+	margin-right: 50px;
+}
+
+input{
+	color: black;
+}
+
+.cover img{
+	width: 150px;
+	padding: 0;
+	border:  #0098DA solid thick;
+}
+
+.aantal input{
+	width: 30px;
+}
+
+.verzending{
+	border: #0098DA solid thick;
+}
+
+.verzending input{
+	margin: 10px 10px 10px 0;
+}
+
+button{
+	color: black;
+}
+
+.bedrag p, .kost p{
+	font-size: 20px;
+}
+
+.spel{
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom:  #0098DA solid thick;
+}
+
+
+

@@ -1,0 +1,279 @@
+@charset "UTF-8";
+/* CSS Document */
+body{
+	font-family: helvetica;
+	padding: 0;
+	color: black;
+}
+
+.hoofding_link, a{
+	color: white;
+}
+
+@media (min-width: 992px){
+	body{
+		background: url(../afbeeldingen/achtergrond4.jpg) no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+
+	.hoofding{
+		width: 1000px;
+	}
+
+	.content{
+		width: 1000px;
+	}
+
+	.footer{
+		width: 1000px;
+	}
+
+	.trailer iframe{
+	border: grey solid thick;
+	height: 300px;
+	width: 50%;
+	}
+}
+
+
+.hoofding
+{	
+	float: none;
+	margin: auto;
+	padding-left: 10px;
+	padding: 0;
+	color: white;
+}
+
+.content{
+	background-color: grey;
+	margin: auto;
+	float: none;
+	padding-left: 10px;
+}
+
+.logo{
+
+	float: left;
+	padding: 0;
+	margin-top: 20px;
+}
+
+.logo img{
+		width: 100%;
+}
+
+.links{
+	padding: 0;
+	margin-top: 15px;
+}
+
+.links ul li{
+	display: inline;
+	padding-left: 10px;
+}
+
+.links ul li a{
+	font-size: 15px;
+}
+
+.gebruiker p{
+	font-size: 15px;
+}
+
+form input{
+	width: 100%;
+	height: 30px;
+	display: inline;
+	margin: 10px 0 10px 10px;
+}
+
+header{
+	background-color: darkgrey
+}
+
+.navbar-default{
+	background-color: darkgrey;
+	border: none;
+	border-radius: 0%;
+	margin: auto;
+	padding:0;
+	margin-bottom: 10px;
+}
+
+.navbar-default .navbar-nav>li>a{
+	color: white;
+	font-size: 120%;
+}
+
+.navbar-default .navbar-nav>li>a:hover{
+	background-color: grey;
+}
+
+#navbar{
+	padding: 0;
+	float: none;
+	margin: auto;
+	width: 1000px;
+}
+
+.foto img{
+	width: 100%;
+	border: grey solid thick;
+}
+
+.foto{
+	margin-right: 10px;
+}
+
+.prijs h4{
+	font-size: 30px;
+}
+
+.game, .beschrijving, .trailer, .screenshots, .reviews, .winkelmand {
+	padding: 10px;
+  	background:rgba(231,231,231,0.8);
+}
+
+.beschrijving, .trailer, .reviews{
+	margin-bottom: 20px;
+}
+
+.winkelmand{
+	right: 15px;
+}
+
+.winkelmand button{
+	margin-bottom: 10px;
+}
+
+.spel{
+	margin: 10px;
+}
+
+.naam_game{
+	padding: 10px;
+  	background:rgba(231,231,231,0.8);
+}
+
+iframe{
+	margin-bottom: 10px;
+}
+
+.screenshots img{
+	width: 100%;
+	border: grey solid thick;
+}
+
+.screenshot{
+	padding: 10px;
+}
+
+footer, footer a{
+	background-color: darkgrey;
+	margin-top: 20px;
+	color: white;
+}
+
+footer ul{
+	list-style-type: none;
+	padding: 0;
+}
+
+footer{
+	width: 100%;
+}
+
+.logo_foot img{
+	width: 100%;
+	margin-top: 60px;
+	margin-bottom: 60px;
+}
+
+.footer{
+
+	float: none;
+	margin: auto;
+	padding: 0;
+}
+
+.naam{
+	text-align: center;
+	margin-top: 10px;
+}
+
+.betalingswijze{
+	padding: 0 0 0 10;
+}
+
+.betalingswijze img{
+	height: 20px;
+	margin: 10px 10px 10px 0;
+}
+
+.knoppen a img{
+	width: 50px;
+	padding: 0 5px 0 0;
+	margin: 0;
+}
+
+
+.knoppen{
+	margin-top: 10px;
+	padding: 0;
+}
+
+.knoppen p, .knoppen a{
+	color: black;
+}
+
+.boven{
+	padding: 0;
+}
+
+.knoppen img{
+	width: 70px;
+	margin-right: 50px;
+}
+
+input{
+	color: black;
+}
+
+.cover img{
+	width: 150px;
+	padding: 0;
+	border: grey solid thick;
+}
+
+.aantal input{
+	width: 30px;
+}
+
+.verzending{
+	border: grey solid thick;
+}
+
+.verzending input{
+	margin: 10px 10px 10px 0;
+}
+
+button{
+	color: black;
+}
+
+.bedrag p, .kost p{
+	font-size: 20px;
+}
+
+.spel{
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 	grey solid thick;
+}
+
+
+

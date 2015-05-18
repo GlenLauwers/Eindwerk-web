@@ -1,0 +1,433 @@
+@charset "UTF-8";
+/* CSS Document */
+body{
+	font-family: helvetica;
+	color: black;
+}
+
+a{
+	color: black;
+}
+
+@media (min-width: 992px){
+	.hoofding{
+		width: 1000px;
+	}
+
+	.content{
+		width: 1000px;
+	}
+
+	.footer{
+		width: 1000px;
+	}
+
+	.trailer iframe{
+	border: grey solid thick;
+	height: 300px;
+	width: 50%;
+	}
+}
+
+.hoofding
+{
+	float: none;
+	margin: auto;
+	padding: 0;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: white;
+}
+
+.content{
+	margin: auto;
+	float: none;
+}
+
+.logo{
+	float: left;
+	padding: 0;
+	margin-top: 20px;
+}
+
+#overzicht_winkelkar img{
+	border: none;
+	width: 40px;
+}
+
+.syntra img, .syntra_2 img{
+	width: 400px;
+	padding: 0 20px 20px 0;
+}
+
+.overzicht_prijs{
+	font-size: 25px;
+}
+
+.links{
+	padding: 0;
+	margin-top: 15px;
+}
+
+.links ul li{
+	display: inline;
+	padding-left: 10px;
+}
+
+.links ul li a{
+	font-size: 15px;
+}
+
+.gebruiker p{
+	font-size: 15px;
+}
+
+.zoeken form input {
+	width: 100%;
+	height: 30px;
+	display: inline;
+	margin: 10px 0 10px 10px;
+}
+
+.bestaande_klanten form input, .contact input{
+	width: 50%;
+	display: block;
+	margin-bottom: 20px;
+}
+
+.contact textarea{
+	width: 100%;
+}
+
+.bestaande_klanten form label{
+	margin: 0;
+}
+
+.registreren input, .betalen input, .inlog_admin{
+	display: block;
+	width: 340px;
+	margin-bottom: 10px;
+	height: 25px;
+}
+
+#registreren, #inloggen, #wijzigen, #verzenden, #inloggen_admin{
+	width: 100px;
+	margin-top: 10px;
+}
+
+ #betalen{
+ 	width: 100px;
+ 	height: 40px;
+ 	background-color: #0098DA;
+ 	color: white;
+ 	border:none;
+ 	font-size: 20px;
+ }
+.veld_register input{
+	width: 150px;
+}
+
+.betalingswijze_afrekenen input, #voorwaarde{
+	display: inline;
+	width: 25px;
+}
+
+.mijn_bestellingen_link{
+	margin-top: 10px;
+}
+
+.kolom1{
+	margin-right: 45px;
+}
+
+#bus, #postcode{
+	width: 75px;
+}
+
+#adres, #gemeente{
+	width: 223px;
+}
+
+#nieuwsbrief{
+	display: inline;
+	width: 20px;
+}
+
+#dag, #maand, #jaar{
+	width: 50px;
+	display: inline;
+	margin-right: 21px;
+	margin-left: 10px;
+}
+
+.datum{
+	margin: 0;
+}
+
+.navbar-default{
+	background-color: #0098DA;
+	border: none;
+	border-radius: 0%;
+	margin: auto;
+	padding:0;
+	margin-bottom: 10px;
+}
+
+.navbar-default .navbar-nav>li>a{
+	color: white;
+	font-size: 120%;
+	border-right: white solid thin;
+}
+
+.navbar-default .navbar-nav>li>a:hover{
+	background-color: #C41230;
+	color: white;
+}
+
+.active{
+	background-color: #C41230;
+	color: white;
+}
+
+#navbar{
+	padding: 0;
+	float: none;
+	margin: auto;
+	width: 1000px;
+}
+
+.foto img{
+	width: 100%;
+	border:  #0098DA solid thick;
+}
+
+.foto{
+	margin-right: 10px;
+}
+
+.prijs h4{
+	font-size: 30px;
+}
+
+.screenshots img{
+	width: 100%;
+	border:  #0098DA solid thick;
+}
+
+.screenshot{
+	padding: 10px;
+}
+
+.trailer iframe{
+	border:  #0098DA solid thick;
+}
+
+footer, footer a{
+	background-color: #0098DA;
+	margin-top: 20px;
+	color: white;
+}
+
+footer ul{
+	list-style-type: none;
+	padding: 0;
+}
+
+footer{
+	width: 100%;
+	color: white;
+}
+
+.logo_foot img{
+	width: 100%;
+	margin-top: 60px;
+	margin-bottom: 60px;
+}
+
+.footer{
+
+	float: none;
+	margin: auto;
+	padding: 0;
+}
+
+.genre{
+	border: #0098DA solid thick;
+}
+
+.genre ul{
+	list-style-type: none;
+	padding: 0;
+}
+
+.genre ul li a{
+	color: #0098DA;
+}
+
+.naam{
+	text-align: center;
+	margin-top: 10px;
+}
+
+.betalingswijze{
+	padding: 0;
+}
+
+.betalingswijze img{
+	height: 20px;
+	margin: 10px 10px 10px 0;
+}
+
+.knoppen ul{
+	padding: 0;
+	list-style-type: none;
+}
+
+.knoppen ul li{
+	font-size: 15px;
+	display: inline;
+	margin-right: 10px;
+}
+
+.knoppen button{
+	width: 220px;
+}
+
+.knoppen a img{
+	width: 60px;
+	margin: 0;
+}
+
+.winkelkar{
+	padding: 0 15px 10px 0;
+}
+
+.verlanglijst{
+	padding: 0 15px 0 0;
+}
+
+.knoppen{
+	padding: 15px;
+}
+
+.boven{
+	padding: 0;
+}
+
+.item img{
+	width: 1000px;
+}
+
+.voorraad{
+	color: green;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.knoppen img{
+	width: 70px;
+	margin-right: 50px;
+}
+
+.carousel{
+	margin-top: 70px;
+}
+
+.overzicht img, .overzicht_home img{
+	width: 150px;
+	border:  #0098DA solid thick;
+}
+
+.overzicht{
+	text-align: center;
+	font-size: 15px;
+}
+
+.product_home{
+	margin-right: 30px;
+	width: 150px;
+	text-align: center;
+}
+
+.product_home p{
+	margin-left: 30px;
+}
+
+.product {
+	margin-bottom: 20px;
+	font-size: 15px;
+}
+
+.product a{
+	color: #0098DA;
+}
+
+.mijn_bestellingen tr{
+	border-bottom: solid thin black;
+}
+
+.mijn_bestellingen table{
+	width: 100%;
+}
+
+input{
+	color: black;
+}
+
+.cover img{
+	width: 150px;
+	padding: 0;
+	border:  #0098DA solid thick;
+}
+
+.aantal input{
+	width: 30px;
+}
+
+.sorteren{
+	margin-right: 62px;
+	margin-bottom: 20px;
+}
+
+.verzending{
+	border: #0098DA solid thick;
+}
+
+.verzending input{
+	margin: 10px 10px 10px 0;
+}
+
+button{
+	color: black;
+}
+
+.bedrag p, .kost p{
+	font-size: 20px;
+}
+
+.spel{
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom:  #0098DA solid thick;
+}
+
+.admin td, .admin th{
+	padding: 10px 10px 10px 0;
+	border-bottom: #0098DA solid 2px;
+}
+
+.admin ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.admin ul li{
+	padding: 10px 10px 10px 0;
+}
+
+
+
+

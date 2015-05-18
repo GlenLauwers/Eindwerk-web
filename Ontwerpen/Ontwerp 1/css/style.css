@@ -1,0 +1,244 @@
+@charset "UTF-8";
+/* CSS Document */
+body{
+	font-family: helvetica;
+	background: url(../afbeeldingen/achtergrond.png) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	padding: 0;
+	color: #e7e7e7;
+}
+
+a{
+	color: #e7e7e7;
+}
+
+@media (min-width: 992px){
+	.hoofding{
+		width: 1000px;
+	}
+
+	.content{
+		width: 1000px;
+	}
+
+	.footer{
+		width: 1000px;
+	}
+
+	.trailer iframe{
+	border: grey solid thick;
+	height: 300px;
+	width: 50%;
+}
+
+
+}
+
+.hoofding
+{	
+	float: none;
+	margin: auto;
+	padding: 0;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.content{
+	margin: auto;
+	float: none;
+}
+
+.logo{
+
+	float: left;
+	padding: 0;
+	margin-top: 20px;
+}
+
+.logo img{
+		width: 100%;
+}
+
+.links{
+	padding: 0;
+	margin-top: 15px;
+}
+
+.links ul li{
+	display: inline;
+	padding-left: 10px;
+}
+
+.links ul li a{
+	font-size: 15px;
+}
+
+.gebruiker p{
+	font-size: 15px;
+}
+
+form input{
+	width: 200px;
+	display: inline;
+	margin-bottom: 20px;
+}
+
+.navbar-default{
+	background-color: lightgrey;
+	border: none;
+	border-radius: 0%;
+	margin: auto;
+	padding:0;
+	margin-bottom: 10px;
+}
+
+.navbar-default .navbar-nav>li>a{
+	color: black;
+	font-size: 120%;
+}
+
+.navbar-default .navbar-nav>li>a:hover{
+	background-color: grey;
+}
+
+#navbar{
+	padding: 0;
+	float: none;
+	margin: auto;
+	width: 1000px;
+}
+
+.foto img{
+	width: 100%;
+	border: grey solid thick;
+}
+
+.foto{
+	margin-right: 10px;
+}
+
+.prijs h4{
+	font-size: 30px;
+}
+
+.screenshots img{
+	width: 100%;
+	border: grey solid thick;
+}
+
+.screenshot{
+	padding: 10px;
+}
+
+
+.trailer{
+	padding: 0;
+}
+
+footer, footer a{
+	background-color: darkgrey;
+	margin-top: 20px;
+}
+
+footer ul{
+	list-style-type: none;
+	padding: 0;
+}
+
+footer{
+	width: 100%;
+}
+
+.logo_foot img{
+	width: 100%;
+	margin-top: 60px;
+	margin-bottom: 60px;
+}
+
+.footer{
+
+	float: none;
+	margin: auto;
+	padding: 0;
+}
+
+.naam{
+	text-align: center;
+	margin-top: 10px;
+}
+
+.betalingswijze{
+	padding: 0;
+}
+
+.betalingswijze img{
+	height: 20px;
+	margin: 10px 10px 10px 0;
+}
+
+.knoppen ul{
+	padding: 0;
+	list-style-type: none;
+}
+
+.knoppen ul li{
+	font-size: 20px;
+	display: inline;
+	margin-right: 10px;
+}
+
+.knoppen{
+	margin-top: 10px;
+	padding: 0;
+}
+
+.boven{
+	padding: 0;
+}
+
+.knoppen img{
+	width: 70px;
+	margin-right: 50px;
+}
+
+input{
+	color: black;
+}
+
+.cover img{
+	width: 150px;
+	padding: 0;
+	border: grey solid thick;
+}
+
+.aantal input{
+	width: 30px;
+}
+
+.verzending{
+	border: grey solid thick;
+}
+
+.verzending input{
+	margin: 10px 10px 10px 0;
+}
+
+button{
+	color: black;
+}
+
+.bedrag p, .kost p{
+	font-size: 20px;
+}
+
+.spel{
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 	grey solid thick;
+}
+
+
+
