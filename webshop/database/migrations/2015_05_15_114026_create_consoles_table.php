@@ -14,8 +14,9 @@ class CreateConsolesTable extends Migration {
 	{
 		Schema::create('consoles', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->increments('id_consoles');
 			$table->string('console');
+			$table->boolean('actief');
 			$table->timestamps();
 		});
 	}

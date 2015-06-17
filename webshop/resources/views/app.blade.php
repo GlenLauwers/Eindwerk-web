@@ -1,62 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Keywords" content="" />
+    <title>{{ $title }}</title>
 
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <!-- Style -->
+    <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/lightbox.css')}}" rel="stylesheet">
 
-	<!-- Fonts -->
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header>
+      <div id="hoofding" class="hoofding row col-md-12 centered">
+        <div class="logo col-md-4">
+          <a href="{{ url('/home') }}"><img src="{{ asset('/afbeeldingen/logo.png') }}" alt="logo"></a>
+        </div>
 
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-</head>
-<body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle Navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Laravel</a>
-			</div>
+        <div class="links col-md-8 hidden-sm hidden-xs">
+          <div class="pull-right">
+            <div>
+              <ul>
+                <li><a href="{{ url('/home') }}">Home</a></li>
+                <li><a href="{{ url('/winkelmand') }}">Winkelmand</a></li>
+                <li><a href="{{ url('/over-ons') }}">Over ons</a></li>
+                <li><a href="{{ url('/contact') }}">Contact</a></li>
 
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Home</a></li>
-				</ul>
+              </ul> </div>
+  
+              <div class="gebruiker pull-right">
+                @if (Auth::user())
+              <p>U bent ingelogd als <a href="{{ url('/dashboard') }}">{{Auth::user()->voornaam}} {{Auth::user()->familienaam}}</a> (<a href="{{ url('/logout') }}">Uitloggen</a>)</p>  
+            @endif      
 
-				<ul class="nav navbar-nav navbar-right">
-					@if (Auth::guest())
-						<li><a href="{{ url('/auth/login') }}">Login</a></li>
-						<li><a href="{{ url('/auth/register') }}">Register</a></li>
-					@else
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
-							</ul>
-						</li>
-					@endif
-				</ul>
-			</div>
-		</div>
-	</nav>
+            @if (!Auth::user())
+              <p>U bent nog niet ingelogd (<a href="{{ url('/login') }}">Inloggen</a>)</p>  
+            @endif         
+             
+            </div>
+          </div>
+        </div>
+      </div>
 
-	@yield('content')
+      <nav class="row col-md-12 navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+        </div>
 
-	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-</body>
-</html>
+        <div id="navbar" class="navbar-collapse collapse nav">
+          @foreach ($console as $console)
+          <ul class="nav navbar-nav navigatie  ">
+            <li><a href="{{ url('console')}}/{{ $console->id_consoles }}">{{ $console->console }}</a></li>
+          </ul>
+          @endforeach
+
+          <div class="zoeken">
+          {!!  Form::open(array('url' => 'search', 'class' => 'pull-right', 'name' =>'zoeken')) !!}
+                <input type="text" name="zoeken" placeholder="Zoek uw game">
+          {!!  Form::close() !!}
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="content">
+		@yield('content')
+    </div>
+	 </div>
+
+    <footer class="col-md-12">
+      <div class="row col-md-12 footer ">
+        <div class="row col-md-4 service">
+          <h2>Klantenservice</h2>
+          <ul>
+            <li><a href="{{ url('/home') }}">Home</a></li>
+            <li><a href="{{ url('/login') }}">Inloggen</a></li>
+            <li><a href="{{ url('/over-ons') }}">Over ons</a></li>
+            <li><a href="{{ url('/contact') }}">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="row col-md-4 betalingswijze">
+          <h2>Betalingswijze</h2>
+          <img src="{{ asset('/afbeeldingen/visa.png') }}" alt="visa">
+          <img src="{{ asset('/afbeeldingen/bankcontact.png') }}" alt="bankcontact">
+          <img src="{{ asset('/afbeeldingen/mastercard.png') }}" alt="mastercard">
+          <img src="{{ asset('/afbeeldingen/maestro.png') }}" alt="maestro">
+          <img src="{{ asset('/afbeeldingen/fortis.png') }}" alt="fortis">
+          <img src="{{ asset('/afbeeldingen/belfius.png') }}" alt="belfius">
+          <img src="{{ asset('/afbeeldingen/ing.png') }}" alt="ing">
+          <img src="{{ asset('/afbeeldingen/kbc.png') }}" alt="kbc">
+          <img src="{{ asset('/afbeeldingen/paypal.png') }}" alt="paypal">
+        </div>
+
+        <div class="col-md-4 row logo_foot pull-right">
+          <img src="{{ asset('/afbeeldingen/logo_wit.png ') }}" alt="logo">
+        </div>   
+      </div>
+    
+      <div class="row col-md-12 naam">
+        <p>2015 -- gameaction</p>
+      </div>
+      
+    </footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ asset('/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('/js/lightbox.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('/js/jquery-1.11.2.min.js')}}"></script>
+    
+  </body>

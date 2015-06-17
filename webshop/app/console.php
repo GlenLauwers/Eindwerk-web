@@ -9,4 +9,6 @@ class Console extends Model {
 		'console',
 	];
 
+	protected $primaryKey = "id_consoles";
+
 }

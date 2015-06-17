@@ -55,7 +55,7 @@ a{
 
 #overzicht_winkelkar img{
 	border: none;
-	width: 40px;
+	max-width: 40px;
 }
 
 .syntra img, .syntra_2 img{
@@ -92,13 +92,17 @@ a{
 	margin: 10px 0 10px 10px;
 }
 
-.bestaande_klanten form input, .contact input{
+.bestaande_klanten form input, .form input, .form select{
 	width: 50%;
 	display: block;
 	margin-bottom: 20px;
 }
 
-.contact textarea{
+.form textarea{
+	width: 100%;
+}
+
+#review{
 	width: 100%;
 }
 
@@ -132,7 +136,7 @@ a{
 
 .betalingswijze_afrekenen input, #voorwaarde{
 	display: inline;
-	width: 25px;
+	width: 20px;
 }
 
 .mijn_bestellingen_link{
@@ -149,18 +153,6 @@ a{
 
 #adres, #gemeente{
 	width: 223px;
-}
-
-#nieuwsbrief{
-	display: inline;
-	width: 20px;
-}
-
-#dag, #maand, #jaar{
-	width: 50px;
-	display: inline;
-	margin-right: 21px;
-	margin-left: 10px;
 }
 
 .datum{
@@ -325,6 +317,7 @@ footer{
 	color: green;
 	font-weight: bold;
 	font-size: 15px;
+	width: 500px;
 }
 
 .knoppen img{
@@ -347,13 +340,9 @@ footer{
 }
 
 .product_home{
-	margin-right: 30px;
-	width: 150px;
+	width: 250px;
 	text-align: center;
-}
-
-.product_home p{
-	margin-left: 30px;
+	padding: 0;
 }
 
 .product {
@@ -363,6 +352,16 @@ footer{
 
 .product a{
 	color: #0098DA;
+}
+
+.product_home .cover{
+	width: 150px;
+	height: 200px;
+}
+
+.product_home a:hover{
+	text-decoration: none;
+	color: black;
 }
 
 .mijn_bestellingen tr{
@@ -414,5 +413,64 @@ button{
 	border-bottom:  #0098DA solid thick;
 }
 
+.tabel td{
+	border-bottom: #0098DA thin solid;
+	height: 50px !important;
+}
 
+.admin{
+	background-color: lightgrey;
+	padding-top: 0;
+	height: 120px;
+}
 
+.toevoegen{
+	padding: 10px 0 10px 0;
+}
+
+.toevoegen a{
+	font-size: 20px;
+}
+
+.cover_admin{
+	width: 100px;
+	margin: 10px;
+}
+
+.screenshots_img{
+	max-width: 230px;
+	min-height: 150px;
+	margin-bottom: 10px;
+}
+
+.niet_verkrijgbaar
+{
+	color: red;
+}
+
+.veel_verkrijgbaar
+{
+	color: green;
+}
+
+.weinig_verkrijgbaar
+{
+	color: orange;
+}
+
+.admin_screenshot
+{
+	max-width: 300px; 
+	margin: 10px;
+}
+
+.cover_home
+{
+	min-width: 170px;
+	height: 200px;
+}
+
+.error{
+	text-align: left;
+	margin-left: 20px;
+}

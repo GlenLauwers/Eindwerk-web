@@ -8,8 +8,8 @@
     <title>{{ $title }}</title>
 
     <!-- Style -->
-    <link href="http://eindwerk.local/webshop/public/css/bootstrap.min.css " rel="stylesheet">
-    <link href="http://eindwerk.local/webshop/public/css/style.css" rel="stylesheet">
+    <link href="{{ asset('/css/bootstrap.min.css') }} " rel="stylesheet">
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,21 +19,47 @@
     <![endif]-->
   </head>
 
-  <header>
+  <header class="admin">
       <div id="hoofding" class="hoofding row col-md-12 centered">
         <div class="logo col-md-4">
-          <a href="index.html"><img src="http://eindwerk.local/webshop/public/afbeeldingen/logo.png" alt="logo"></a>
+          <a href="{{ url('/admin') }}"><img src="{{ asset('/afbeeldingen/logo.png') }}" alt="logo"></a>
         </div>
-      </div>
+      
+
+      <div class="links">
+          <div class="pull-right">
+            <ul>
+              <li><a href="{{ url('/admin') }}">Home</a></li>
+              <li><a href="{{ url('/admin-consoles') }}">Consoles</a></li>
+              <li><a href="{{ url('/admin-genres') }}">Genres</a></li>
+              <li><a href="{{ url('/admin-ontwikkelaars') }}">Ontwikkelaars</a></li>
+              <li><a href="{{ url('/admin-artikels') }}">Artikels</a></li>
+              <li><a href="">Bestellingen</a></li>
+            </ul>
+          </div>
+
+          <div class="gebruiker pull-right">
+            @if (Auth::user())
+              <p>U bent ingelogd als {{Auth::user()->voornaam}} {{Auth::user()->familienaam}} ({{Auth::user()->type}}) (<a href="{{ url('/admin-logout') }}">Uitloggen</a>)</p>  
+            @endif      
+
+            @if (!Auth::user())
+              <p>U bent niet ingelogd. Gelieve u <a href="{{ url('/admin-login') }}">in te loggen</a>.</p>  
+            @endif         
+          </div>
+        </div>
   </header>
 
   <div class="content">
-    @yield('content')
+      @yield('content')
   </div>
 
-   <footer class="row col-md-12 naam">
+
+<footer class=" col-md-12">
+    <div class="row col-md-12 naam">
           <p>2015 -- gameaction</p>
-    </footer>
+    </div>
+</footer>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
