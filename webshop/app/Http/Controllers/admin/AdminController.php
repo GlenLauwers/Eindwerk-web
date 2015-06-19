@@ -7,6 +7,7 @@ use App\User;
 use App\genres;
 use App\ontwikkelaars;
 use App\Artikels;
+use App\Factuur;
 use Request;
 use Auth;
 
@@ -54,7 +55,7 @@ class AdminController extends Controller {
 				$id = $users[0];
 				Auth::login($id);
 				flash()->success('Welkom, u bent ingelogd.');
-				return redirect('admin');
+				return redirect('admin-home');
 			}
 		}
 	}
@@ -64,7 +65,7 @@ class AdminController extends Controller {
 		$user = Auth::user();
 		Auth::logout($user);
 		flash()->success('U bent uitgelogd. Tot de volgende keer.');
-		return redirect('admin-login');
+		return redirect('admin');
 
 	}
 
@@ -140,6 +141,50 @@ class AdminController extends Controller {
 			$title = ('Artikels - Admin');
 			$artikels = Artikels::where('artikels.actief', '=', 0)->join('consoles', 'consoles.id_consoles', '=', 'artikels.console_id')->get();
 			return view('admin.artikels.artikels', compact('title', 'artikels'));
+		}
+	}
+
+	public function bestellingen()
+	{
+		if (Auth::user()->type != 'admin') 
+		{
+			return redirect('/');
+		}
+		
+		else
+		{	
+			$title = ('Bestellingen - Admin');
+			$bestelling = Factuur::orderBy('factuurs.created_at', 'desc')
+								->join('statuses', 'factuurs.status', '=', 'statuses.id_status')
+								->join('users', 'factuurs.user_id', '=', 'users.id')
+								->get();
+
+			$niet_betaald = Factuur::orderBy('factuurs.created_at', 'desc')
+								->join('statuses', 'factuurs.status', '=', 'statuses.id_status')
+								->join('users', 'factuurs.user_id', '=', 'users.id')
+								->where('factuurs.status', '=', 1)
+								->get();
+
+			$betaald = Factuur::orderBy('factuurs.created_at', 'desc')
+								->join('statuses', 'factuurs.status', '=', 'statuses.id_status')
+								->join('users', 'factuurs.user_id', '=', 'users.id')
+								->where('factuurs.status', '=', 2)
+								->get();
+
+			$verzonden = Factuur::orderBy('factuurs.created_at', 'desc')
+								->join('statuses', 'factuurs.status', '=', 'statuses.id_status')
+								->join('users', 'factuurs.user_id', '=', 'users.id')
+								->where('factuurs.status', '=', 3)
+								->get();
+
+			$bezorgd = Factuur::orderBy('factuurs.created_at', 'desc')
+								->join('statuses', 'factuurs.status', '=', 'statuses.id_status')
+								->join('users', 'factuurs.user_id', '=', 'users.id')
+								->where('factuurs.status', '=', 4)
+								->get();
+
+			return view('admin.bestellingen.bestellingen', compact('title', 'bestelling', 'niet_betaald', 'verzonden', 'betaald', 'bezorgd'));
+	
 		}
 	}
 }

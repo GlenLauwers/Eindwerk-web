@@ -82,7 +82,7 @@
         </div>
 
         <div class="row onder col-md-12">
-          <input type="checkbox" value="1" name="voorwaarden" id="voorwaarden"><label>Ja, ik ga akkoord met de voorwaarden</label>
+          <input type="checkbox" value="1" name="voorwaarden" id="voorwaarden"><label>Ja, ik ga akkoord met de <a href="{{ asset('/voorwaarden') }}">voorwaarden</a></label>
           <p>Velden met een * zijn verplicht.</p>
           <input type="submit" value="Registreren" name="registreren" id="registreren">
         </div>

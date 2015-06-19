@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row col-md-12 titel">
-	<p><a href="{{ asset('/admin') }}">Admin</a>><a href="{{ asset('/admin-genres') }}">Genres</a>>{{ $genres_wijzigen->console }} wijzigen</p>
+	<p><a href="{{ asset('/admin-home') }}">Admin</a>><a href="{{ asset('/admin-genres') }}">Genres</a>>{{ $genres_wijzigen->console }} wijzigen</p>
     <h1>Admin: {{ $genres_wijzigen->console }} wijzigen</h1>
 </div>
 

@@ -22,19 +22,19 @@
   <header class="admin">
       <div id="hoofding" class="hoofding row col-md-12 centered">
         <div class="logo col-md-4">
-          <a href="{{ url('/admin') }}"><img src="{{ asset('/afbeeldingen/logo.png') }}" alt="logo"></a>
+          <a href="{{ url('/admin-home') }}"><img src="{{ asset('/afbeeldingen/logo.png') }}" alt="logo"></a>
         </div>
       
 
       <div class="links">
           <div class="pull-right">
             <ul>
-              <li><a href="{{ url('/admin') }}">Home</a></li>
+              <li><a href="{{ url('/admin-home') }}">Home</a></li>
               <li><a href="{{ url('/admin-consoles') }}">Consoles</a></li>
               <li><a href="{{ url('/admin-genres') }}">Genres</a></li>
               <li><a href="{{ url('/admin-ontwikkelaars') }}">Ontwikkelaars</a></li>
               <li><a href="{{ url('/admin-artikels') }}">Artikels</a></li>
-              <li><a href="">Bestellingen</a></li>
+              <li><a href="{{ url('/admin-bestellingen') }}">Bestellingen</a></li>
             </ul>
           </div>
 

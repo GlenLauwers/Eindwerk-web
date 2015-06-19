@@ -12,19 +12,6 @@
        <div class="col-md-12 row">
     @include('flash::message')
       </div>
-
-      <div class="row col-md-3 sorteren pull-right">
-        <form>
-          <select name="sorteren">
-            <option value="sorteren">Sorteren op</option>
-            <option value="a-z">Alfabetisch (oplopend)</option>
-            <option value="z-a">Alfabetisch (aflopend)</option>
-            <option value="1-9">Release datum (oplopend)</option>
-            <option value="9-1">Release datum (aflopend)</option>
-          </select>
-        </form>
-      </div>
-
       <div class="row col-md-12">
         <div class="row col-md-2 genre">
           <h4>Genre:</h4>
@@ -32,7 +19,7 @@
            <li><a href="{{ url('console')}}/{{$consoles->id_consoles}}">Alle genres</a></li>
             @foreach ($genre as $genre)
            
-            <li><a href="#">{{ $genre->genres }}</a></li>
+            <li><a href="{{ url('console')}}/{{$consoles->id_consoles}}?genre={{ $genre->id_genres }}">{{ $genre->genres }}</a></li>
            @endforeach
           </ul>
          

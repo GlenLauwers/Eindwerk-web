@@ -9,5 +9,23 @@
 			$query = $this->db->get('ontwikkelaars');
 			return $query->result();
 		}
+
+		public function wijzigenontwikkelaars()
+		{
+			$wijzigen = $this->input->post('wijzigen');
+			$this->db->where('id', $wijzigen);
+
+			$query = $this->db->get('ontwikkelaars');
+			return $query->result();
+		}
+
+		public function verwijderontwikkelaars()
+		{
+			$verwijderen = $this->input->post('verwijderen');
+			$this->db->where('id', $verwijderen);
+
+			$query = $this->db->get('ontwikkelaars');
+			return $query->result();
+		}
 	}
-?>
+?> 

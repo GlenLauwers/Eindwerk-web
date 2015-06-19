@@ -6,11 +6,14 @@
 
 	$database_verwijderen = $this->ConsoleModel->verwijderConsoles();
 
+	if (!isset($_COOKIE['authenticated'])) 
+	{
+		redirect('admin-login');
+	}
+
 ?>
 
-<div class="row col-md-12 titel">
-    <h1>Console</h1>
-</div>
+<h1>Console</h1>
 
 <p><a href="admin-console?toevoegen">Nieuwe console toevoegen</a></p>
 
@@ -23,7 +26,7 @@
 <?php endif ?>
 
 <?php if (isset($_GET['toevoegen'])): ?>
-	<form action="Console/nieuwe_console" method="POST">
+	<form action="admin/Console/nieuwe_console" method="POST">
 		<label for="console">Console:</label>
 			<input type="text" name="console" id="console">
 
@@ -35,7 +38,7 @@
 	<?php foreach ($database_wijzigen as $console): ?>
 		<h2>Console wijzigen: <?= $console->naam_console ?></h2>
 
-		<form action="Console/wijzigen" method="POST">
+		<form action="admin/Console/wijzigen" method="POST">
 			<input type="hidden" name="id" value="<?= $console->id ?>">
 			
 			<label for="console">Console:</label>
@@ -50,7 +53,7 @@
 	<?php foreach ($database_verwijderen as $console): ?>
 		<p>Bent u zeker dat u '<?= $console->naam_console ?>' wilt verwijderen?</p>
 
-		<form action="Console/verwijderen" method="POST">
+		<form action="admin/Console/verwijderen" method="POST">
 			<input type="hidden" name="id" value="<?= $console->id ?>">
 			<button type="submit" name="verwijderen_ja" value="ja">Ja</button>
 			<button type="submit" name="verwijderen_neen" value="neen">Neen</button>

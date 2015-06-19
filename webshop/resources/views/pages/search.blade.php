@@ -13,30 +13,7 @@
     @include('flash::message')
       </div>
 
-      <div class="row col-md-3 sorteren pull-right">
-        <form>
-          <select name="sorteren">
-            <option value="sorteren">Sorteren op</option>
-            <option value="a-z">Alfabetisch (oplopend)</option>
-            <option value="z-a">Alfabetisch (aflopend)</option>
-            <option value="1-9">Release datum (oplopend)</option>
-            <option value="9-1">Release datum (aflopend)</option>
-          </select>
-        </form>
-      </div>
-
       <div class="row col-md-12">
-        <div class="row col-md-2 genre">
-          <h4>Genre:</h4>
-          <ul> 
-           <li><a href="#">Alle genres</a></li>
-            @foreach ($genre as $genre)
-           
-            <li><a href="#">{{ $genre->genres }}</a></li>
-           @endforeach
-          </ul>
-         
-        </div>
 
         <div class=" col-md-10 overzicht">
         @if(!count($artikels))

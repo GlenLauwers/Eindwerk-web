@@ -17,7 +17,7 @@ class CreateWinkelmandsTable extends Migration {
 			$table->increments('id_winkelmand');
 			$table->string('artikel_id');
 			$table->string('user_id');
-			$table->string('aantal');
+			$table->string('aantal_in_winkelmand');
 			$table->boolean('actief');
 			$table->timestamps();
 		});

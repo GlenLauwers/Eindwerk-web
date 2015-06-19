@@ -2,13 +2,18 @@
 
 	$database_ontwikkelaar = $this->OntwikkelaarsModel->viewontwikkelaars();
 
+	$database_wijzigen = $this->OntwikkelaarsModel->wijzigenontwikkelaars();
 
+	$database_verwijderen = $this->OntwikkelaarsModel->verwijderontwikkelaars();
 
+	if (!isset($_COOKIE['authenticated'])) 
+	{
+		redirect('admin-login');
+	}
+ 
 ?>
 
-<div class="row col-md-12 titel">
-    <h1>Ontwikkelaars</h1>
-</div>
+<h1>Ontwikkelaars</h1>
 
 <p><a href="admin-ontwikkelaars?toevoegen">Nieuwe ontwikkelaar toevoegen</a></p>
 
@@ -29,8 +34,36 @@
 	</form>
 <?php endif ?>
 
+<?php if (isset($_POST['wijzigen'])): ?>
+	<?php foreach ($database_wijzigen as $ontwikkelaar): ?>
+		<h2>Console wijzigen: <?= $ontwikkelaar->naam_ontwikkelaar ?></h2>
+
+		<form action="admin/Ontwikkelaars/wijzigen" method="POST">
+			<input type="hidden" name="id" value="<?= $ontwikkelaar->id ?>">
+			
+			<label for="ontwikkelaar">Ontwikkelaar:</label>
+			<input type="text" name="ontwikkelaar" id="ontwikkelaar" value="<?= $ontwikkelaar->naam_ontwikkelaar ?>">
+
+			<input type="submit" name="ontwikkelaar_wijzigen" id="ontwikkelaar_toevoegen" value="Wijzigen">
+		</form>
+	<?php endforeach ?>
+<?php endif ?>
+
+<?php if (isset($_POST['verwijderen'])): ?>
+	<?php foreach ($database_verwijderen as $ontwikkelaar): ?>
+		<p>Bent u zeker dat u '<?= $ontwikkelaar->naam_ontwikkelaar ?>' wilt verwijderen?</p>
+
+		<form action="admin/Ontwikkelaars/verwijderen" method="POST">
+			<input type="hidden" name="id" value="<?= $ontwikkelaar->id ?>">
+			<input type="hidden" name="genre" value="<?= $ontwikkelaar->naam_ontwikkelaar ?>">
+			<button type="submit" name="verwijderen_ja" value="ja">Ja</button>
+			<button type="submit" name="verwijderen_neen" value="neen">Neen</button>
+		</form>
+	<?php endforeach ?>
+<?php endif ?>
+
 <?php if (count($database_ontwikkelaar) <= 0): ?>
-	Er zijn geen genres gevonden in de database.
+	Er zijn geen ontwikkelaars gevonden in de database.
 <?php endif ?>
 
 <?php if (count($database_ontwikkelaar) > 0): ?>

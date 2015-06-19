@@ -4,11 +4,14 @@
 	$database_wijzigen = $this->GenreModel->wijzigenGenre();
 
 	$database_verwijderen = $this->GenreModel->verwijderGenre();
+
+	if (!isset($_COOKIE['authenticated'])) 
+	{
+		redirect('admin-login');
+	}
 ?>
 
-<div class="row col-md-12 titel">
-    <h1>Genres</h1>
-</div>
+<h1>Genres</h1>
 
 <p><a href="admin-genres?toevoegen">Nieuw genre toevoegen</a></p>
 
@@ -21,7 +24,7 @@
 <?php endif ?>
 
 <?php if (isset($_GET['toevoegen'])): ?>
-	<form action="Genre/nieuw_genre" method="POST">
+	<form action="admin/Genre/nieuw_genre" method="POST">
 		<label for="genre">Genre:</label>
 			<input type="text" name="genre" id="genre">
 
@@ -33,7 +36,7 @@
 	<?php foreach ($database_wijzigen as $genre): ?>
 		<h2>Console wijzigen: <?= $genre->genre ?></h2>
 
-		<form action="Genre/wijzigen" method="POST">
+		<form action="admin/Genre/wijzigen" method="POST">
 			<input type="hidden" name="id" value="<?= $genre->id ?>">
 			
 			<label for="genre">Genre:</label>
@@ -48,7 +51,7 @@
 	<?php foreach ($database_verwijderen as $genre): ?>
 		<p>Bent u zeker dat u '<?= $genre->genre ?>' wilt verwijderen?</p>
 
-		<form action="Genre/verwijderen" method="POST">
+		<form action="admin/Genre/verwijderen" method="POST">
 			<input type="hidden" name="id" value="<?= $genre->id ?>">
 			<input type="hidden" name="genre" value="<?= $genre->genre ?>">
 			<button type="submit" name="verwijderen_ja" value="ja">Ja</button>

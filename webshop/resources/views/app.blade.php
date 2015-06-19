@@ -19,39 +19,48 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+
   <body>
     <header>
-      <div id="hoofding" class="hoofding row col-md-12 centered">
-        <div class="logo col-md-4">
-          <a href="{{ url('/home') }}"><img src="{{ asset('/afbeeldingen/logo.png') }}" alt="logo"></a>
-        </div>
+    <div>
+      <div id="hoofding" class="hoofding row col-md-12">
+        <div class="content">
+          <div class="logo col-md-4">
+            <a href="{{ url('/home') }}"><img src="{{ asset('/afbeeldingen/logo.png') }}" alt="logo"></a>
+          </div>
 
-        <div class="links col-md-8 hidden-sm hidden-xs">
-          <div class="pull-right">
-            <div>
-              <ul>
-                <li><a href="{{ url('/home') }}">Home</a></li>
-                <li><a href="{{ url('/winkelmand') }}">Winkelmand</a></li>
-                <li><a href="{{ url('/over-ons') }}">Over ons</a></li>
-                <li><a href="{{ url('/contact') }}">Contact</a></li>
-
-              </ul> </div>
+          <div class="linken col-md-8 hidden-sm hidden-xs">
+            <div class="pull-right">
+              <div>
+                <ul>
+                  <li><a href="{{ url('/home') }}">Home</a></li>
+                  <li><a href="{{ url('/winkelmand') }}">Winkelmand</a></li>
+                  <li><a href="{{ url('/over-ons') }}">Over ons</a></li>
+                  <li><a href="{{ url('/contact') }}">Contact</a></li>
+                </ul> 
+              </div>
   
               <div class="gebruiker pull-right">
                 @if (Auth::user())
-              <p>U bent ingelogd als <a href="{{ url('/dashboard') }}">{{Auth::user()->voornaam}} {{Auth::user()->familienaam}}</a> (<a href="{{ url('/logout') }}">Uitloggen</a>)</p>  
-            @endif      
+                  <p>U bent ingelogd als <a href="{{ url('/dashboard') }}">{{Auth::user()->voornaam}} {{Auth::user()->familienaam}}</a> (<a href="{{ url('/logout') }}">Uitloggen</a>)</p>  
+                @endif      
 
-            @if (!Auth::user())
-              <p>U bent nog niet ingelogd (<a href="{{ url('/login') }}">Inloggen</a>)</p>  
-            @endif         
-             
+                @if (!Auth::user())
+                  <p>U bent nog niet ingelogd (<a href="{{ url('/login') }}">Inloggen</a>)</p>  
+                @endif             
+              </div>
+
+              <div class="row col-md-12 zoeken pull-right">
+                {!!  Form::open(array('url' => 'search', 'class'=>'pull-right', 'name' =>'zoeken')) !!}
+                  <input type="text" name="zoeken" placeholder="Zoek uw game">
+                {!!  Form::close() !!}
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <nav class="row col-md-12 navbar navbar-default">
+      <nav class="col-md-12 navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -69,21 +78,15 @@
             <li><a href="{{ url('console')}}/{{ $console->id_consoles }}">{{ $console->console }}</a></li>
           </ul>
           @endforeach
-
-          <div class="zoeken">
-          {!!  Form::open(array('url' => 'search', 'class' => 'pull-right', 'name' =>'zoeken')) !!}
-                <input type="text" name="zoeken" placeholder="Zoek uw game">
-          {!!  Form::close() !!}
-          </div>
         </div>
       </nav>
+    </div>
     </header>
 
     <div class="content">
 		@yield('content')
     </div>
-	 </div>
-
+	
     <footer class="col-md-12">
       <div class="row col-md-12 footer ">
         <div class="row col-md-4 service">
@@ -97,16 +100,8 @@
         </div>
 
         <div class="row col-md-4 betalingswijze">
-          <h2>Betalingswijze</h2>
-          <img src="{{ asset('/afbeeldingen/visa.png') }}" alt="visa">
-          <img src="{{ asset('/afbeeldingen/bankcontact.png') }}" alt="bankcontact">
-          <img src="{{ asset('/afbeeldingen/mastercard.png') }}" alt="mastercard">
-          <img src="{{ asset('/afbeeldingen/maestro.png') }}" alt="maestro">
-          <img src="{{ asset('/afbeeldingen/fortis.png') }}" alt="fortis">
-          <img src="{{ asset('/afbeeldingen/belfius.png') }}" alt="belfius">
-          <img src="{{ asset('/afbeeldingen/ing.png') }}" alt="ing">
-          <img src="{{ asset('/afbeeldingen/kbc.png') }}" alt="kbc">
-          <img src="{{ asset('/afbeeldingen/paypal.png') }}" alt="paypal">
+          <p>Betalen via overschrijving</p>
+          <p>Gratis Verzending</p>
         </div>
 
         <div class="col-md-4 row logo_foot pull-right">

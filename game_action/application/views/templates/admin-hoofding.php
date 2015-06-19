@@ -32,13 +32,20 @@
               <li><a href="admin-console">Consoles</a></li>
               <li><a href="admin-genres">Genres</a></li>
               <li><a href="admin-ontwikkelaars">Ontwikkelaars</a></li>
-              <li><a href="">Artikels</a></li>
+              <li><a href="admin-artikels">Artikels</a></li>
               <li><a href="">Bestellingen</a></li>
             </ul>
           </div>
 
           <div class="gebruiker pull-right">
-              <p>U bent ingelogd als Glen Lauwers (<a href="#">Uitloggen</a>)</p>
+            <?php if (isset($_COOKIE['authenticated'])): ?>
+              <p>U bent ingelogd als naam (<a href="admin/login/Login/logout">Uitloggen</a>)</p>
+            <?php endif ?>
+
+            <?php if (!isset($_COOKIE['authenticated'])): ?>
+              <p>U bent nog niet ingelogd. <a href="admin-login">Gelieve u in te loggen</a>.</p>
+            <?php endif ?>
+              
           </div>
         </div>
       </div>

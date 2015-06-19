@@ -55,7 +55,11 @@
       </div>
 
       <div class="row col-md-5 mijn_bestellingen">
-        <h2>Mijn bestellingen</h2>
+      <h2>Mijn bestellingen</h2>
+            @if (!count($bestelling))
+              <p>U hebt nog geen bestellingen geplaatst.</p>
+      @else
+        
         <table>
           <tr>
             <th>Ordernummer:</th>
@@ -63,26 +67,18 @@
             <th>Bedrag:</th>
             <th>Status:</th>
           </tr>
+
+          @foreach ($bestelling as $bestelling)
           <tr>
-            <td>01122465</td>
-            <td>04/03/2015</td>    
-            <td>€ 29,99</td>
-            <td>Bezorgd</td>
+            <td><a href="{{ url('/bestelling', [$bestelling->id_factuur]) }}">{{ $bestelling->id_factuur }}</a></td>
+            <td>{{ $bestelling->datum }}</td>    
+            <td>€ {{ $bestelling->prijs }}</td>
+            <td>{{ $bestelling->status }}</td>
           </tr>
-          <tr>
-            <td>01122432</td>
-            <td>13/03/2015</td>    
-            <td>€ 33,99</td>
-            <td>Onderweg</td>
-          </tr>
-          <tr>
-            <td>01122433</td>
-            <td>09/04/2015</td>    
-            <td>€ 29,99</td>
-            <td>niet betaald</td>
-          </tr>
+          @endforeach
         </table>
-        <p class="mijn_bestellingen_link"><a href="bestellingen.html">Bekijk alle bestellingen</a></p>
+            <p class="mijn_bestellingen_link"><a href="{{ url('/bestellingen') }}">Bekijk alle bestellingen</a></p>
+       @endif
       </div>
 
       <div class="row col-md-12 gegevens_wijzigen">

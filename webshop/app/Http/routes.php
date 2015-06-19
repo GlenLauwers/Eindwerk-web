@@ -43,6 +43,8 @@ Route::get('admin-ontwikkelaars', 'admin\AdminController@ontwikkelaars');
 
 Route::get('admin-artikels', 'admin\AdminController@artikels');
 
+Route::get('admin-bestellingen', 'admin\AdminController@bestellingen');
+
 //Consoles
 
 Route::get('admin-consoles/toevoegen', 'admin\AdminConsolesController@toevoegen');
@@ -120,6 +122,17 @@ Route::get('admin-artikels/screenshots/delete/{id}', 'admin\AdminArtikelsControl
 
 Route::get('admin-artikels/screenshots/verwijder/{id}', 'admin\AdminArtikelsController@screenshots_delete_confirmed');
 
+//Bestellingen
+
+Route::get('admin-bestellingen/niet_betaald/{id}', 'admin\adminBestellingenController@niet_betaald');
+
+Route::get('admin-bestellingen/betaald/{id}', 'admin\adminBestellingenController@betaald');
+
+Route::get('admin-bestellingen/verzonden/{id}', 'admin\adminBestellingenController@verzonden');
+
+Route::get('admin-bestellingen/bezorgd/{id}', 'admin\adminBestellingenController@bezorgd');
+
+Route::get('admin-bestellingen/{id}', 'admin\adminBestellingenController@bestelling');
 });
 /*
 |--------------------------------------------------------------------------
@@ -154,7 +167,15 @@ Route::post('search', 'PagesController@search');
 //over ons
 Route::get('over-ons', 'PagesController@over_ons');
 
+//Contact
 
+Route::get('contact', 'PagesController@contact');
+
+Route::post('contact', 'PagesController@post_contact');
+
+//Voorwaarden
+
+Route::get('voorwaarden', 'PagesController@voorwaarden');
 
 //Login
 Route::get('login', 'PagesController@login');
@@ -177,8 +198,14 @@ Route::get('dashboard/edit/{id}', 'PagesController@dashboard_wijzigen');
 
 Route::post('dashboard/edit/{id}', 'PagesController@dashboard_wijzigen_confirmed');
 
+Route::get('bestelling/{id}', 'PagesController@bestelling_show');
+
+Route::get('bestellingen', 'PagesController@bestellingen');
+
 //Winkelmand
 Route::get('winkelmand', 'PagesController@winkelmand');
+
+Route::post('winkelmand/update', 'PagesController@update_winkelmand');
 
 Route::get('winkelmand/{id}', 'PagesController@toevoegen_winkelmand');
 
@@ -186,6 +213,8 @@ Route::get('winkelmand/delete/{id}', 'PagesController@verwijderen_winkelmand');
 
 //Afrekenen
 Route::get('afrekenen', 'PagesController@afrekenen');
+
+Route::post('afrekenen', 'PagesController@afrekenen_post');
 
 });
 

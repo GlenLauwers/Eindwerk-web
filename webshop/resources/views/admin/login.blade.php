@@ -9,7 +9,7 @@
     @include('flash::message')
 </div>
 
-     {!!  Form::open(['url' => 'admin-login']) !!}
+     {!!  Form::open(['url' => 'admin']) !!}
      	{!! Form::label('gebruikersnaam', 'Gebruikersnaam:') !!}
 			{!! Form::text('gebruikersnaam', null) !!}
 

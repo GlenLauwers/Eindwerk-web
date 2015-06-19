@@ -9,9 +9,12 @@ use App\Screenshots;
 use App\Reviews;
 use Auth;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\contactrequest;
 use Request;
 use App\User;
 use App\Winkelmand;
+use App\Factuur;
+use App\FactuurDetails;
 
 use Illuminate\Pagination\Paginator;
 
@@ -51,18 +54,32 @@ class PagesController extends Controller {
 		$console = console::get();
 		$genre = genres::get();
 		$consoles = console::findOrFail($id);
+			
+		$title =  $consoles->console .' games- Game Action';
 
-		$artikels = Artikels::where('artikels.console_id', '=', $id)
+		if (isset($_GET['genre'])) {
+			$artikels = Artikels::where('artikels.console_id', '=', $id)
+								->where('artikels.actief', '=', 0)
+								->where('artikels.genre_id','=', $_GET['genre'])
 								->where('artikels.actief', '=', 0)
 								->join('consoles', 'console_id', '=', 'consoles.id_consoles')
 								->join('ontwikkelaars', 'ontwikkelaars_id', '=', 'ontwikkelaars.id_ontwikkelaars')
 								->join('genres', 'genre_id', '=', 'genres.id_genres')
 								->paginate(12);
+		}
 
-								
-		$title =  $consoles->console .' games- Game Action';
-
-		return view('pages.console', compact('title', 'console', 'consoles', 'artikels', 'genre'));
+		else
+		{
+			$artikels = Artikels::where('artikels.console_id', '=', $id)
+								->where('artikels.actief', '=', 0)
+								->where('artikels.actief', '=', 0)
+								->join('consoles', 'console_id', '=', 'consoles.id_consoles')
+								->join('ontwikkelaars', 'ontwikkelaars_id', '=', 'ontwikkelaars.id_ontwikkelaars')
+								->join('genres', 'genre_id', '=', 'genres.id_genres')
+								->paginate(12);
+		}
+		
+		return view('pages.console', compact('title', 'console', 'consoles', 'artikels', 'genre'));		
 	}
 
 	public function over_ons()
@@ -128,9 +145,15 @@ class PagesController extends Controller {
 
 	public function dashboard()
 	{
+		$auth = Auth::user()->id;
 		$title = 'Dashboard - Game Action';
 		$console = console::get();
-		return view('pages.dashboard', compact('title','console'));
+		$bestelling = Factuur::where('factuurs.user_id', '=', $auth)
+								->join('statuses', 'factuurs.status', '=', 'statuses.id_status')
+								->orderBy('factuurs.created_at', 'desc')
+								->take(5)
+								->get();
+		return view('pages.dashboard', compact('title','console', 'bestelling'));
 	}
 
 	public function dashboard_wijzigen($id)
@@ -169,6 +192,37 @@ class PagesController extends Controller {
 
 		flash()->success('Uw gegevens werden gewijzigd.');
 		return redirect('dashboard');
+	}
+
+	public function bestelling_show($id)
+	{
+		$auth = Auth::user()->id;
+		$title = 'Bestelling '. $id. ' - Game Action';
+		$console = console::get();
+		
+		$bestelling = Factuur::where('factuurs.user_id', '=', $auth)
+								->where('factuurs.id_factuur', '=', $id)
+								->join('statuses', 'factuurs.status', '=', 'statuses.id_status')
+								->get();
+		$details = FactuurDetails::where('factuur_id', '=', $id)
+									->join('artikels', 'product_id', '=', 'artikels.id_artikels')
+									->join('consoles', 'console_id', '=', 'consoles.id_consoles')
+									->get();
+
+		return view('pages.bestelling_details', compact('title','console', 'bestelling', 'id', 'details'));
+	}
+
+	public function bestellingen()
+	{
+		$auth = Auth::user()->id;
+		$title = 'Bestellingen - Game Action';
+		$console = console::get();
+		$bestelling = Factuur::where('factuurs.user_id', '=', $auth)
+								->join('statuses', 'factuurs.status', '=', 'statuses.id_status')
+								->orderBy('factuurs.created_at', 'desc')
+								->get();
+	
+		return view('pages.bestellingen', compact('title','console', 'bestelling'));
 	}
 
 	public function search()
@@ -285,12 +339,13 @@ class PagesController extends Controller {
 								->join('consoles', 'console_id', '=', 'consoles.id_consoles')
 								->get();
 		$title = 'Winkelmand - Game Action';
+
 		$console = console::get();
 		$totaal = 0;
 		foreach ($winkelmand as $prijzen ) 
 		{
-			$prijs = $prijzen['attributes']['prijs'];
-			$totaal +=$prijs;
+			$totaal_prijzen = $prijzen['attributes']['prijs'] * $prijzen['attributes']['aantal_in_winkelmand'];;
+			$totaal +=$totaal_prijzen;
 		}
 		return view('pages.winkelmand', compact('title', 'console', 'winkelmand', 'totaal'));
 
@@ -319,15 +374,58 @@ class PagesController extends Controller {
 			$nieuwe_winkelmand = new Winkelmand;
 			$nieuwe_winkelmand->artikel_id = $artikel;
 			$nieuwe_winkelmand->user_id = $user;
-			$nieuwe_winkelmand->aantal = 1;
+			$nieuwe_winkelmand->aantal_in_winkelmand = 1;
 			$nieuwe_winkelmand->actief = $actief;
 
 			$nieuwe_winkelmand->save();
 
-			flash()->success('Het artikel werd in uw winkelmand geplaatst.');
+			flash()->success("Het artikel werd in uw winkelmand geplaatst.");
 			return redirect($_SERVER['HTTP_REFERER']);
 		}
 
+	}
+
+	public function update_winkelmand()
+	{
+		$input = request::all();
+
+		$id = $input['id'];
+		$aantal = $input['aantal'];
+
+		$winkelmand =  Winkelmand::findOrFail($id);
+		
+		$artikel_id = $winkelmand['attributes']['artikel_id'];
+		$artikel = Artikels::findOrFail($artikel_id);
+		$artikel_aantal = $artikel['attributes']['aantal'];
+		if ($aantal > $artikel_aantal) 
+		{
+			flash()->error('Kies een kleiner aantal. Er zijn niet genoeg games meer in voorraad.');
+			return redirect('winkelmand');
+		}
+
+		else
+		{
+			if ($aantal < 1) 
+			{
+				$winkelmand_update = Winkelmand::findOrFail($id);
+				$winkelmand_update->actief = 1;
+	
+				$winkelmand_update->save();	
+				
+				
+			}
+	
+			else
+			{
+				$winkelmand_update = Winkelmand::findOrFail($id);
+				$winkelmand_update->aantal_in_winkelmand = $aantal;
+	
+				$winkelmand_update->save();	
+			}
+
+			flash()->success('Uw winkelmand werd gewijzigd.');
+			return redirect('winkelmand');
+		}		
 	}
 
 	public function verwijderen_winkelmand ($id)
@@ -344,8 +442,145 @@ class PagesController extends Controller {
 	{
 		$title = 'Afrekenen - Game Action';
 		$console = console::get();
-		return view('pages.afrekenen', compact('title', 'console'));
+		$auth = Auth::user()->id;
+		$winkelmand = Winkelmand::where('winkelmands.user_id', '=', $auth)
+								->where('winkelmands.actief', '=', 0)
+								->join('artikels', 'artikel_id', '=', 'artikels.id_artikels')
+								->join('consoles', 'console_id', '=', 'consoles.id_consoles')
+								->get();
+		$user = User::where('actief', '=', 0)
+						->where('id', '=', $auth)
+						->get();
+		$totaal = 0;
 
+			foreach ($winkelmand as $prijzen ) 
+			{
+				$totaal_prijzen = $prijzen['attributes']['prijs'] * $prijzen['attributes']['aantal_in_winkelmand'];
+				$totaal +=$totaal_prijzen;
+			}
+							
+			
+			if (!count($winkelmand)) 
+			{
+				return redirect('winkelmand');
+			}
+	
+			else
+			{
+				return view('pages.afrekenen', compact('title', 'console', 'user', 'winkelmand', 'totaal'));
+			}
 	}
 
+	public function afrekenen_post()
+	{
+		$input = request::all();
+		$auth = Auth::user()->id;
+
+		$winkelmand = Winkelmand::where('winkelmands.user_id', '=', $auth)
+								->where('winkelmands.actief', '=', 0)
+								->join('artikels', 'artikel_id', '=', 'artikels.id_artikels')
+								->join('consoles', 'console_id', '=', 'consoles.id_consoles')
+								->get();
+
+		$user = User::where('actief', '=', 0)
+						->where('id', '=', $auth)
+						->get();
+
+		$totaal = 0;
+		foreach ($winkelmand as $prijzen ) 
+		{
+			$totaal_prijzen = $prijzen['attributes']['prijs'] * $prijzen['attributes']['aantal_in_winkelmand'];
+			$totaal +=$totaal_prijzen;
+		}
+
+		$naam =$input["familienaam"] . ' ' . $input['voornaam'];
+		$adres = $input['adres'];
+		$bus = $input['bus'];
+		$postcode = $input['postcode'];
+		$gemeente = $input['gemeente'];
+		$land = $input['land'];
+		$prijs = $totaal;
+		$status = 1;
+		$date = date('Y-m-d');
+		$nieuwe_factuur = new Factuur;
+			$nieuwe_factuur->user_id = $auth;
+			$nieuwe_factuur->verzend_naam = $naam;
+			$nieuwe_factuur->adres = $adres;
+			$nieuwe_factuur->bus = $bus;
+			$nieuwe_factuur->postcode = $postcode;
+			$nieuwe_factuur->gemeente = $gemeente;
+			$nieuwe_factuur->prijs = $prijs;
+			$nieuwe_factuur->status = $status;
+			$nieuwe_factuur->land = $land;
+			$nieuwe_factuur->datum = $date;
+			$nieuwe_factuur->save();
+
+		$insert_id = $nieuwe_factuur->id_factuur;
+
+		foreach ($winkelmand as $value) 
+		{
+			$nieuwe_factuurDetails = new FactuurDetails;
+				$nieuwe_factuurDetails->factuur_id = $insert_id;
+				$nieuwe_factuurDetails->product_id =  $value['attributes']['artikel_id'];
+				$nieuwe_factuurDetails->aantal_in_details = $value['attributes']['aantal_in_winkelmand'];
+
+				$nieuwe_factuurDetails->save();
+
+			$id_artikel = $value->id_artikels;
+
+			$min = $value->aantal - $value->aantal_in_winkelmand;
+
+			$update_artikel = Artikels::findOrFail($id_artikel);
+				$update_artikel->aantal = $min;
+				$update_artikel->save();
+		}
+
+		$winkelmand_verwijder = Winkelmand::where('winkelmands.user_id', '=', $auth)
+										->where('winkelmands.actief', '=', 0)
+										->get();
+
+		foreach ($winkelmand_verwijder as $winkelmand_verwijder) 
+		{
+						$winkelmand_verwijder->actief = 1;
+						$winkelmand_verwijder->save();
+		}
+		
+
+
+
+		flash()->success('Uw bestelling werd geplaatst.');
+		return redirect('dashboard');
+	}
+
+	public function contact()
+	{
+		$title = 'Bestellingen - Game Action';
+		$console = console::get();
+		$auth = Auth::user();
+
+		return view('pages.contact', compact('title', 'console', 'auth'));
+	}
+
+	public function post_contact(contactrequest $Request)
+	{
+		$input = request::all();
+		$mailto = 'glenlauwers@hotmail.com';
+		$onderwerp = 'Bericht van contact';
+		$bericht = $input['bericht'];
+		$header= "U kreeg een bericht van". $input['voornaam']. " ". $input['familienaam']. " (" .$input['email'].").";
+
+		mail($mailto, $onderwerp, $bericht, $header);
+
+		flash()->success('Uw bericht werd verstuurd. We proberen zo snel mogelijk een antwoord te versturen.');
+		return redirect('contact');
+	}
+
+	public function voorwaarden()
+	{
+		$title = 'Bestellingen - Game Action';
+		$console = console::get();
+
+		return view('pages.voorwaarden', compact('title', 'console'));
+
+	}
 }

@@ -17,7 +17,7 @@ class CreateFactuurDetailsTable extends Migration {
 			$table->increments('id_details');
 			$table->string('factuur_id');
 			$table->string('product_id');
-			$table->string('aantal');
+			$table->string('aantal_in_details');
 			$table->timestamps();
 		});
 	}

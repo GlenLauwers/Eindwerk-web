@@ -16,12 +16,14 @@ class CreateFactuursTable extends Migration {
 		{
 			$table->increments('id_factuur');
 			$table->string('user_id');
-			$table->string('naam');
+			$table->string('verzend_naam');
 			$table->string('adres');
 			$table->string('bus');
 			$table->string('postcode');
 			$table->string('gemeente');
+			$table->string('land');
 			$table->string('prijs');
+			$table->date('datum');
 			$table->string('status');
 			$table->timestamps();
 		});

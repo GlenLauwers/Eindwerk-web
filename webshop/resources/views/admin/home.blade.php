@@ -15,7 +15,7 @@
 		<li><a href="{{ url('/admin-genres') }}">Genres</a></li>
 		<li><a href="{{ url('/admin-ontwikkelaars') }}">Ontwikkelaars</a></li>
 		<li><a href="{{ url('/admin-artikels') }}">Artikels</a></li>
-		<li><a href="">Bestellingen</a></li>
+		<li><a href="{{ url('/admin-bestellingen') }}">Bestellingen</a></li>
 	</ul>
 </div>
 
